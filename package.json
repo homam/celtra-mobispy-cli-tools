@@ -1,0 +1,16 @@
+{
+  "name": "celtra",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "LiveScript": "^1.2.0",
+    "prelude-ls": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Homam <homam@live.com> (http://homam.me/)",
+  "license": "ISC"
+}

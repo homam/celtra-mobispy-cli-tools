@@ -1,0 +1,22 @@
+#!/usr/local/bin/lsc -d
+ 
+# example: echo "[1,2,3,4,5]" | ./jqlsc.ls "sum . map (+ 2)"
+ 
+{each, obj-to-pairs} = require \prelude-ls
+lsc = require \LiveScript
+ 
+global <<< require \prelude-ls
+ 
+trim = -> if it[*-1] == \; then it.substr 0, it.length - 1 else it
+ 
+stdin = process.openStdin!
+code = process.argv.2
+ 
+input = ""
+stdin.on \data, (data) -> 
+	input += data if data is not null
+ 
+stdin.on \end, ->
+	compiled =  lsc.compile code, bare: true
+	compiled = "(#{trim compiled})(#input)"
+	process.stdout.write <| eval compiled |> (-> JSON.stringify it, null, 4) |> (+ \\n)

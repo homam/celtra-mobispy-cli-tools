@@ -1,0 +1,12 @@
+#!/usr/local/bin/lsc -d
+
+stdin = process.openStdin!
+code = process.argv.2
+ 
+input = ""
+stdin.on \data, (data) -> 
+	input += data if data is not null
+ 
+stdin.on \end, ->
+	process.stdout.write <| (JSON.parse input) |> (require \./../src/json-to-csv)
+	process.stdout.write "\n"

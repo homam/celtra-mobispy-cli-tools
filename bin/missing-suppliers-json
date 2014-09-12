@@ -1,0 +1,12 @@
+#!/usr/local/bin/lsc -d
+
+stdin = process.openStdin!
+code = process.argv.2
+ 
+input = ""
+stdin.on \data, (data) -> 
+	input += data if data is not null
+ 
+stdin.on \end, ->
+	process.stdout.write <| (require \./../src/missing-suppliers) (JSON.parse input) |> -> JSON.stringify it, null, 4
+	process.stdout.write "\n"
