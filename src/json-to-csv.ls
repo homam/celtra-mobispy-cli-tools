@@ -35,8 +35,8 @@ unwinded-json-to-csv = (arr) ->
 # String -> b -> o -> [unwind ... b <<< o] or b <<< o
 unwind = (prefix, baggage, obj) -->
 
-  prefixify = (p) ->
-    (if prefix == "" then "" else prefix + "-") + p
+  prefixify = (p, d = '-') ->
+    (if prefix == "" then "" else prefix + d) + p
 
   return concat-map (unwind prefix, {} <<< baggage), obj if is-array obj
 

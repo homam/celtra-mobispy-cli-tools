@@ -5,5 +5,6 @@
 - Missing Suppliers
 
 ```Shell
-./bin/missing-suppliers-json > ~/Desktop/missing-suppliers.csv
+cd reports
+./missing-suppliers > ~/Desktop/missing-suppliers.csv
 ```
